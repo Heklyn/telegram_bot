@@ -136,9 +136,9 @@ def message_answer(msg):
             nums = list(map(int, msg.text.split()))
         except:
             return create_some_text(chat_id) + message_choose_n_row(True), ikb_return
-
+        max_lens = max([len(str(i)) for i in nums])
         size = get_size(chat_id)
-        if len(nums) == size:
+        if len(nums) == size and max_lens <= 19:
             matrix = get_matrix(chat_id)
             row = get_row(chat_id)
             matrix = change_n_row(matrix, size, nums, row)
@@ -153,9 +153,9 @@ def message_answer(msg):
             nums = list(map(int, msg.text.split()))
         except:
             return create_some_text(chat_id) + message_choose_n_column(True), ikb_return
-
+        max_lens = max([len(str(i)) for i in nums])
         size = get_size(chat_id)
-        if len(nums) == size:
+        if len(nums) == size and max_lens <= 19:
             matrix = get_matrix(chat_id)
             column = get_column(chat_id)
             matrix = change_n_column(matrix, size, nums, column)
@@ -172,8 +172,9 @@ def message_answer(msg):
                 arr.extend(list(map(int, item.split())))
         except:
             return create_some_text(chat_id) + message_change_all(True), ikb_return
+        max_lens = max([len(str(i)) for i in nums])
         size = get_size(chat_id)
-        if len(arr) == size * size:
+        if len(arr) == size * size and max_lens <= 19:
             arr = [str(i) for i in arr]
             matrix = ' '.join(arr)
             update_matrix(chat_id, matrix)
