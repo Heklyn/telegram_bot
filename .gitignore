@@ -131,3 +131,6 @@ dmypy.json
 
 # config
 config.py
+
+# db
+new.db
